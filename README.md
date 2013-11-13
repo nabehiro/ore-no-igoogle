@@ -7,7 +7,7 @@ http://ore-no-igoogle.herokuapp.com/
 
 + git clone
 + bundle install
-+ change following files,
++ create 2 files (see secret_token.rb.example, omniauth.rb.example)
 config/initializers/secret_token.rb
 config/initializers/omniauth.rb
 + rake db:migrate
