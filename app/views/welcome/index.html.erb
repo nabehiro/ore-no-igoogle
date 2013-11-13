@@ -1,0 +1,284 @@
+<div class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="javascript:void()" style="cursor:default">俺の iGoogle</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="http://www.google.co.jp/search?q=" class="query">search</a></li>
+        <li><a href="http://www.google.co.jp/search?tbm=isch&q=" class="query">image</a></li>
+        <li><a href="http://www.google.co.jp/search?tbm=vid&q=" class="query">movie</a></li>
+        <li><a href="http://maps.google.co.jp/maps?q=" class="query">map</a></li>
+        <li><a href="https://mail.google.com/mail/?tab=lm">mail</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+<div class="container" id="mainContent">
+
+	<form method="get" action="http://www.google.co.jp/search">
+		<div class="row">
+	  	<div class="col-sm-6 col-sm-offset-3">
+	  		<div class="row" id="searchArea">
+	  			<div class="col-xs-9">
+				  	<input type="text" class="form-control col-xs-6" id="searchText" placeholder="" name="q" autocomplete="off">
+	  			</div>
+	  			<div class="col-xs-3">
+						<button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-search"></span></button>
+	  			</div>
+	  		</div>
+	  	</div>
+		</div>
+	</form>
+
+	<blockquote id="topExplain">
+		<p>You can save widgets you change when you connect SNS,</p>
+		<p>
+      <a class="btn btn-primary" href="/auth/facebook">Facebook</a>&nbsp;
+      <a class="btn btn-info" href="/auth/twitter">Twitter</a>&nbsp;
+      <a class="btn btn-warning" href="/auth/google">Google</a>
+    </p>
+	</blockquote>
+
+	<div class="row" id="loading">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+			<div class="progress progress-striped active">
+		  <div class="progress-bar"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+		    <span class="sr-only">45% Complete</span>
+		  </div>
+		</div>	
+		</div>
+		<div class="col-sm-3"></div>
+	</div>
+
+  <div id="tabContainer">
+  	<ul id="tabTitles" class="nav nav-tabs">
+  		<li><a href="javascript:void(0)" id="createTab">
+  			<span class="glyphicon glyphicon-plus"></span>
+  		</a></li>
+  	</ul>
+  	<div id="tabContents" class="tab-content"></div>
+	</div>
+
+</div><!-- /.container -->
+
+<div id="footer">
+  <div class="container">
+  	<div class="row">
+			<div class="col-sm-4">
+				<p class="text-muted credit">
+		    	double clicking tab enable you to rename tab title.
+		    </p>
+			</div>
+			<div class="col-sm-4">
+				<!-- facebook -->
+				<div class="pull-left">
+					<div class="fb-like" data-href="http://ore-no-igoogle.herokuapp.com/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+				<!-- twitter -->
+				<div class="pull-left">
+					<a href="https://twitter.com/share" class="twitter-share-button" data-via="twitterapi" data-lang="en">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</div>
+				<!-- hatena -->
+				<div class="pull-left">
+					<a href="http://b.hatena.ne.jp/entry/http://ore-no-igoogle.herokuapp.com/" class="hatena-bookmark-button" data-hatena-bookmark-title="俺のiGoogle" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+				</div>
+				<!-- pocket -->
+				<div class="pull-left" style="padding-left:10px">
+					<a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
+<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<p class="text-muted credit">
+		    	<a href="https://github.com/nabehiro">Hiroyuki Watanabe</a> at Sigma consulting corp.
+		    </p>
+			</div>
+		</div>    
+  </div>
+</div>
+
+<!-- =================================================================================
+	modal
+================================================================================== -->
+<div class="modal fade" id="addWidgetModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Add Widget</h4>
+      </div>
+      <div class="modal-body">
+				<form onsubmit="return false">
+					<div class="row">
+						<div class="col-xs-10" style="padding-right:5px">
+							<input type="text" class="form-control" id="addWidgetUrl" placeholder="Enter feed url">
+						</div>
+						<div class="col-xs-2" style="padding-left:5px">
+							<button id="testWidget" type="button" class="btn btn-success btn-block"><span class="glyphicon glyphicon-refresh"></span></button>
+						</div>
+					</div>
+				</form>
+				<div id="testArea"></div>
+				<div id="sampleFeeds"></div>
+
+      </div>
+      <div class="modal-footer" style="margin-top:0px">
+        <button id="addWidget" type="button" class="btn btn-primary">Add Widget</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- =================================================================================
+	template
+================================================================================== -->
+<script type="text/template" id="navbar-right-template">
+	<ul class="nav navbar-nav navbar-right">
+		<li><a data-toggle="modal" href="#addWidgetModal">Add widget</a></li>
+		{{ if (loggedIn) { }}
+      <li><a href="/logout">Logout</a></li>
+		{{ } else { }}
+	  	<li class="dropdown">
+	      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Connect <b class="caret"></b></a>
+	      <ul class="dropdown-menu">
+	        <li><a href="/auth/facebook">Facebook</a></li>
+	        <li><a href="/auth/twitter">Twitter</a></li>
+	        <li><a href="/auth/google">Google</a></li>
+	      </ul>
+	    </li>
+		{{ } }}
+  </ul>
+</script>
+
+<script type="text/template" id="sampleFeedsTemplate">
+	<ul class="nav nav-tabs">
+		{{ _.each(groups, function(group) { }}
+			<li class="{{= groups[0] == group ? 'active' : '' }}">
+				<a href="#{{- group.category }}" data-toggle="tab">{{- group.category }}</a>
+			</li>
+		{{ }) }}
+	</ul>
+	<div class="tab-content sample-feed-list">
+		{{ _.each(groups, function(group) { }}
+		  <div class="tab-pane {{= groups[0] == group ? 'active' : '' }}" id="{{- group.category }}">
+		  	<ul class="list-unstyled">
+			  	{{ _.each(group.feeds, function(feed) { }} 
+			  		<li><a href="{{- feed.url }}">{{- feed.title }}</a></li>
+			  	{{ }) }}
+			  </ul>
+		  </div>
+		{{ }) }}
+	</div>
+</script>
+
+<script type="text/template" id="tabTitleTemplate">
+	<a href="#{{= id }}" data-toggle="tab">
+		<span>{{- title }}</span>
+		<button type="button" class="close">&times;</button>
+	</a>
+</script>
+
+<script type="text/template" id="tabContentTemplate">
+	<div class="col-sm-4 column-wrapper">
+		<div class="column"></div>
+	</div>
+	<div class="col-sm-4 column-wrapper">
+		<div class="column"></div>
+	</div>
+	<div class="col-sm-4 column-wrapper">
+		<div class="column"></div>
+	</div>
+</script>
+
+<script type="text/template" id="widgetTemplate">
+	<div class="panel panel-{{= color }}">
+		<div class="widget-header panel-heading">
+			<button type="button" class="delete btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
+			<button type="button" class="settings btn btn-default btn-xs"><span class="glyphicon glyphicon-cog"></span></button>
+			<button type="button" class="refresh btn btn-default btn-xs"><span class="glyphicon glyphicon-refresh"></span></button>
+			<h3 class="panel-title">{{- title }}</h3>
+		</div>
+
+		<div class="widget-settings panel-body" style="display:none">
+			<form role="form" onsubmit="return false">
+			  <div class="form-group">
+			    <label for="title-{{= id }}">Title</label>
+			    <input type="text" name="title" class="form-control input-sm" id="title-{{= id }}">
+			  </div>
+			  <div class="form-group">
+			    <label for="url-{{= id }}">Feed url</label>
+			    <input type="text" name="url" class="form-control input-sm" id="url-{{= id }}">
+			  </div>
+			  <div class="form-group">
+			    <label for="num-{{= id }}">Num per page</label>
+			    <select name="num" class="form-control input-sm" id="num-{{= id }}">
+			    	<option>1</option>
+			    	<option>2</option>
+			    	<option>3</option>
+			    	<option>4</option>
+			    	<option>5</option>
+			    	<option>6</option>
+			    	<option>7</option>
+			    	<option>8</option>
+			    	<option>9</option>
+			    	<option>10</option>
+			    	<option>15</option>
+			    	<option>20</option>
+			    	<option>30</option>
+			    </select>
+			  </div>
+			  <div class="form-group">
+			    <label for="color-{{= id }}">Widget Color</label>
+			    <select name="color" class="form-control input-sm" id="color-{{= id }}">
+			    	<option value="default">white</option>
+			    	<option value="primary">blue</option>
+			    	<option value="success">green</option>
+			    	<option value="info">skyblue</option>
+			    	<option value="warning">yellow</option>
+			    	<option value="danger">red</option>
+			    </select>
+			  </div>
+			  <div class="form-group">
+			    <label for="tab-{{= id }}">Tab</label>
+			    <select name="tabId" class="form-control input-sm" id="tab-{{= id }}">
+			    </select>
+			  </div>
+				<button type="button" class="btn btn-primary btn-sm save">Save</button>&nbsp;
+		  	<button type="button" class="btn btn-default btn-sm cancel">Cancel</button>
+			</form>
+			<hr/>
+		</div>
+
+		<div class="widget-content panel-body" style="display:{{= collapsed ? "none" : "block" }}">
+			{{ if (entries && entries.length > num) { }}
+				<ul class="pager">
+					<li class="disabled previous-page"><a href="javascript:void(0)">Previous</a></li>
+					<li class="next-page"><a href="javascript:void(0)">Next</a></li>
+				</ul>
+			{{ } }}
+			<ul class="feeds">
+				{{ if (entries) { }}
+					{{ _.each(entries, function(entry, idx) { }}
+						<li style="display:{{= idx < num ? 'list-item' : 'none' }}" data-page="{{= Math.floor(idx / num) }}">
+							<a href="{{- entry.url }}" target="_blank">{{- entry.title }}</a>
+							&nbsp;<small class="text-muted">{{= entry.date }}</small>
+							{{ if (entry.hatebu > 0) { }}
+								&nbsp;<code>{{= entry.hatebu }} users</code>
+							{{ } }}
+						</li>
+					{{ }); }}
+				{{ } }}
+			</ul>
+		</div>
+	</div>
+</script>

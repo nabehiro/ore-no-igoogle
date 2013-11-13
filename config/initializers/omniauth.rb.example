@@ -1,0 +1,24 @@
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :twitter,
+  	"< enter twitter app id >",
+  	"< enter twitter app secret >"
+
+  if Rails.env.development?
+    provider :facebook,
+      "< enter fb dev app id >",
+      "< enter fb dev app id >"
+  else
+    provider :facebook,
+      "< enter fb app id >",
+      "< enter fb app id >"
+  end
+  	
+  provider :google_oauth2,
+  	"< enter google app id >",
+  	"< enter google app secret >",
+  	{
+  		name: "google",
+  		scope: "userinfo.profile",
+  		approval_prompt: 'auto'
+  	}
+end

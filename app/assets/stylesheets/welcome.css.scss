@@ -1,0 +1,188 @@
+.nav>li>a {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+#mainContent {
+	min-height: 1000px;
+}
+#footer {
+	padding: 30px 0 10px;
+	background-color: #f0f0f0;
+}
+#topExplain {
+	margin-top: 10px;
+	visibility: hidden;
+	a {
+		padding: 6px 10px;
+	}
+}
+
+// search
+// ======================================================================
+#searchArea div {
+	padding-left: 5px;
+	padding-right: 5px
+}
+.suggest
+{
+  position: absolute;
+  z-index: 100;
+  overflow: auto;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  display: none;
+  text-align: left;
+  color: #555;
+  font-size: 15px;
+
+  div {
+  	display: block;
+    overflow: auto;
+    white-space: nowrap;
+    text-align: left;
+    padding: 1px 12px;
+
+    &.select {
+		  color: #333;
+		  background-color:#ebebeb;
+		}
+  }
+}
+
+// tab
+// ======================================================================
+#tabContainer {
+	display: none;
+}
+
+#tabTitles {
+	margin: 10px 0 20px;
+	li.title {
+		a {
+			cursor: move;
+		}
+		span {
+			padding: 0 3px 0 17px;	
+		}
+		button.close {
+			position: relative;
+			top: -1px;
+			visibility: hidden;
+			font-size: 17px;
+			float: none;
+		}
+		a:hover button.close {
+			visibility: visible;
+		}	
+	}
+
+	#createTab span {
+		padding: 0 15px;
+	}
+}
+
+// main content
+// ======================================================================
+
+
+
+
+.column-wrapper {
+	padding-left: 7px;
+	padding-right: 7px;
+}
+.column {
+	min-height: 300px;
+	padding-bottom: 100px;
+}
+.widget {
+	margin-bottom: 15px;
+}
+.widget-header {
+	cursor: move;
+	padding: 2px 6px 2px;
+
+	h3 {
+		font-size: 13px;
+		padding: 4px 0;
+		font-weight: bold;
+	}
+	button {
+		float: right;
+		margin-left: 2px;
+		opacity: 0.7;
+		filter: alpha(opacity=70);
+	}
+}
+.widget-settings {
+	padding-bottom: 0px;
+}
+.widget-content {
+	min-height: 50px;
+	padding: 5px;
+
+	ul.feeds {
+		padding-left: 16px;
+		margin-bottom: 0;
+
+		li {
+			font-size: 13px;
+			padding-bottom: 3px;
+
+			a {
+				word-wrap: break-word;
+				color: #15c;
+			}
+			small {
+				font-size: 10px;
+			}
+			code {
+				font-size: 9px;
+				padding: 1px 2px;
+			}
+		}
+	}
+	ul.pager {
+		margin: 0 0 5px;
+
+		li > a {
+			padding-top: 1px;
+			padding-bottom: 1px;
+			font-size: 11px;
+		}
+	}
+}
+.widget-placeholder {
+	margin-bottom: 15px;
+	border: dashed 2px #aaa;
+}
+
+// add widget modal
+// ======================================================================
+@media screen and (min-width: 768px) {
+	.modal-dialog {
+		width: 768px
+	}	
+}
+.sample-feed-list {
+	margin-top: 10px;
+
+	li {
+		display: inline-block;
+		width: 30%;
+		font-size: 12px;
+		vertical-align: top;
+		padding-left:5px;
+	}
+}
+#testArea {
+	margin-top: 20px;
+	min-height: 180px;
+
+	button {
+		display: none;
+	}
+	.pager {
+		display: none;
+	}
+}
