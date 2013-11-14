@@ -3,6 +3,8 @@ ore-no-igoogle
 
 http://ore-no-igoogle.herokuapp.com/
 
+![Alt 俺のiGoogle](capture.png)
+
 # How to try
 
 + git clone
